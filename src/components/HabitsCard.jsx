@@ -6,9 +6,9 @@ function HabitsCard() {
     return saved
       ? JSON.parse(saved)
       : [
-          { name: "Drink Water 💧", done: false },
-          { name: "Exercise 🏋️", done: false },
-          { name: "Study 📚", done: false }
+          { name: "Hydration", done: false },
+          { name: "Exercise", done: false },
+          { name: "Learning", done: false }
         ];
   });
 
@@ -27,9 +27,15 @@ function HabitsCard() {
     setHabits(updated);
   };
 
+  const completedCount = habits.filter(h => h.done).length;
+
   return (
     <div className="card">
-      <h2>Habits</h2>
+      <h2 data-icon="✓">Habits</h2>
+
+      <div style={{ marginBottom: '16px', fontSize: '0.85rem', color: '#666' }}>
+        {completedCount} of {habits.length} completed
+      </div>
 
       <ul className="habits-list">
         {habits.map((habit, index) => (
@@ -39,7 +45,7 @@ function HabitsCard() {
             onClick={() => toggleHabit(index)}
           >
             {habit.name}
-            <span>{habit.done ? "✔" : "✖"}</span>
+            <span>{habit.done ? "✓" : "○"}</span>
           </li>
         ))}
       </ul>
