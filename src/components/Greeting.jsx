@@ -1,4 +1,6 @@
-function Greeting() {
+import React from "react";
+
+function Greeting({ userName }) {
   const getGreeting = () => {
     const hour = new Date().getHours();
     if (hour < 12) return "Good Morning";
@@ -8,7 +10,7 @@ function Greeting() {
 
   return (
     <h1 className="greeting">
-      {getGreeting()}, Sisipho
+      {getGreeting()}, {userName}
     </h1>
   );
 }
